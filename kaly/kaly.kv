@@ -1,14 +1,99 @@
 #:kivy 1.7.2
+#<--encoding: UTF-8-->
 
-#<Kaly>:
-#<Button>:
+
+#:import random random
+
+
 <FirstScreen>:
+    #bird: kaly_bird
     canvas:
-		Rectangle:
-        #Image:
-            #size_hint: None, None                     # important;
+        Rectangle:
+            #texture: self.background_image.texture
             size: self.size
             pos: self.pos
             # The default size_hint is (1, 1). If the parent is a Layout, then the widget size will be the parent/layout size.
-            source: 'media/kaly-background5.png'
+            #source: 'media/kaly-background2.png'
+            #source: 'media/kaly-background2-smaller.png'
+            source: 'media/kaly-background2-small.png'
+    Image:
+        id: kaly_tree
+        source: 'media/tree/kaly_tree.png'    
+        #size: root.width/2, root.height - 2 * root.height/16
+        size_hint: 0.5, 0.875 
+        pos: -self.width/3, root.height/16
+        keep_ratio: True
+  
+    KalyBird:
+        id: kaly_bird
+        source: 'media/little_bird_lower_res.png'
+        #size: root.width/5.2, root.height/5.27
+        # root refers to parent widget/layout -> FirstScreen
+        size_hint: 0.19, 0.19
+        #keep_ratio: True
+        # position around the tree; adjust to make it sit on the branch
+        #pos: kaly_tree.width - kaly_tree.width/1.89, kaly_tree.height - kaly_tree.height/4.12 
+        # 294, 244  these are the coords of a point in the branch
+        # Position over the worm hole
+        #pos: kaly_tree.width - kaly_tree.width/1.89, kaly_tree.height - kaly_tree.height/4.12 
+        pos: root.width * 2/3 + 20, root.height/7 + 40
+
+    Image:
+        id: corn_father
+        source: 'media/corn_father.png'
+        #size: root.width/6.11, root.height/2.77
+        size_hint: 0.16, 0.36
+        # TODO: turn keep_ratio to True
+        keep_ratio: True
+
+    Image:
+        id: corn_child_1
+        source: 'media/corn_child_cut_off_3.png'
+        #size: root.width/8.3, root.height/2.2
+        size_hint: 0.12, 0.45 
+        keep_ratio: True
+        x: corn_father.width * 3/2
+
+    Image:
+        id: corn_child_2
+        source: 'media/corn_child_middle_cut_off_3.png'
+        #size: root.width/9.8, root.height/2.69    
+        size_hint: 0.10, 0.37
+        keep_ratio: True
+        x: corn_father.width * 2
+
+    Image:
+        id: corn_child_3
+        source: 'media/corn_child_youngest_cut_off_3.png'
+        #size: root.width/12.2, root.height/3.01
+        size_hint: 0.081, 0.33
+        keep_ratio: True
+        x: corn_father.width
+
+    Image:
+        source: 'media/worm_hole_small_1.png'
+        # size relative to window:
+        #size: root.width / 26, root.height / 23
+        size_hint: 0.038, 0.043
+        # Position relative to window, random 
+        #pos: random.randrange(200, 600, 20), random.randrange(root.height/7, root.height/4, 20) 
+        # TODO: this should be adapted to the shape of the ground(like the tip of a sine wave)
+        #pos: random.randrange(root.width/2, root.width * 2/3 , 20), random.randrange(root.height/7, root.height/5, 20) 
+        # Used for demo purposes:
+        #pos: random.randrange(200, 600, 20), 100
+        pos: root.width * 2/3, root.height/7
+                                # root.height/5, 20) 
+                                #
+        Image:
+            # don't need size_hint if parent is a widget
+            id: worm
+            source: 'media/worm_3.png'
+            #source: 'media/worm_2_smaller.png'
+            # ratios for worm_2.png
+            #size: root.width/7.12, root.height/2.51
+            # ratios for worm_2_smaller.png
+            #size: root.width/14.2, root.height/5
+            size: root.width/28.26, root.height/9.94
+            keep_ratio: True
+            pos: root.width * 2/3 + 10, root.height/7.2
 
