@@ -1,0 +1,3 @@
+title=Kaly Corn Puffs
+author=Andrei Chiver <andreichiver@gmail.com>
+orientation=landscape
